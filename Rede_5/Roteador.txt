@@ -1,0 +1,13 @@
+Roteador: 
+Hostname: RJ_1
+ip domain-name: rj.com (necessidade de criar pois é obrigatório para criar a chave RSA) 
+Bits da chave rsa: 1024Bits
+Porta utilizada para o link: GE0/0/0
+Senha em privilégio(secret): cisco
+username(acesso SSH): hugo
+password(acesso SSH): cisco
+Database_ssh: Login local
+line vty permitidas: 0 - 2 
+tipo de conexão: ssh
+
+

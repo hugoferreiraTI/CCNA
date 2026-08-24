@@ -1,0 +1,28 @@
+=============================
+
+          ROUTER_RJ
+
+=============================
+password secret: cisco
+
+ip domain-name para chave ssh: rj.com
+
+Bits utilizado no ssh: 1024
+
+username: hugo password: cisco
+
+line vty: 0 - 4 ativado em ssh, demais desativadas.
+
+login local habilitado.
+
+lldp habilitado.
+
+Interfaces: 
+GE0/0: 172.16.10.1 /29 255.255.255.248
+GE0/1:2001:0db8:85a3:0000:0000:8a2e:0370:7334 
+
+Conexão:
+S_Sales: Conexão funcionando normalmente, pingue feito e funcionando.
+
+
+

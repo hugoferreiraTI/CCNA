@@ -1,0 +1,30 @@
+===============================================
+
+                  S_TI
+
+===============================================
+
+Hostname: S_TI
+
+Protocolo utilizado: Ipv6
+Vlan1                      [up/up]
+    FE80::201:C9FF:FE47:802
+    2001:DB8:85A3::8A2E:370:7335
+
+Senha: cisco
+
+SSH: habilitado
+
+rsa: 1024bits
+
+Ip domain-name: rj.com
+
+usarname: hugo
+password: cisco
+
+line vty: 0 - 4 ativado em ssh, demais desativadas.
+
+lldp ativado.
+
+
+

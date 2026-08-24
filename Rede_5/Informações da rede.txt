@@ -1,0 +1,12 @@
+Ipv4 router: 10.10.102.1/12
+Ipv4 classe A
+ipv4 binário: 00001010.00001010.01100110.00000001
+Ipv4 hexadecimal:0A.0A.66.01
+
+Primeiro Host Válido: 10.0.0.1
+
+Último Host Válido: 10.15.255.254
+
+Máscara de sub-rede: 255.240.00
+Host possíveis: 1.048.574
+

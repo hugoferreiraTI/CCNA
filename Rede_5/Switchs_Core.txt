@@ -1,0 +1,13 @@
+Switch core: 
+Hostname: S_core
+Uplink: GE0/1 - router
+Ip: 10.10.102.2
+Ip gerenciando pela interface Vlan1
+Password para privilégio: cisco
+Ip domain-name: rj.com
+Bits rsa: 1024
+Line permitida para acesso: 0 1
+Usando login local para acesso.
+Login local: hugo 
+password acesso SSH: cisco
+llpd habilitado.

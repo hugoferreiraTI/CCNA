@@ -1,0 +1,21 @@
+==============================
+
+            S_Sales
+
+==============================
+
+Interface gerenciada: Vlan1
+
+Ip adress vlan1: 172.16.10.2 /29
+
+SSh: Habilitado
+
+ip domain-name: rj.com
+
+rsa: 1024 bits
+
+Username: hugo
+
+password: cisco
+
+llpd habilitado
