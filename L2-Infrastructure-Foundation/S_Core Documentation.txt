@@ -1,0 +1,21 @@
+==========================================
+ 
+                 S_CORE
+              RESTRITECED ACESS
+
+==========================================
+hostname: S_CORE
+
+enable secret cisco
+
+ip address 192.168.1.2 /24 in vlan1
+
+ip domain-name rj.com
+
+key rsa active with 1024
+
+username admin password cisco
+
+transport input ssh in line vty 0 - 2, more is disabled
+
+lldp run

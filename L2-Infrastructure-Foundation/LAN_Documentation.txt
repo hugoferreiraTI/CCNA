@@ -1,0 +1,15 @@
+LLDP: Capability codes:
+    (R) Router, (B) Bridge, (T) Telephone, (C) DOCSIS Cable Device
+    (W) WLAN Access Point, (P) Repeater, (S) Station, (O) Other
+Device ID           Local Intf     Hold-time  Capability      Port ID
+S_Departaments1     Fa0/1          120        B               Gig0/1
+ROUTER_RJ           Gig0/1         120        R               Gig0/0/0
+S_Departamens2      Fa0/2          120        B               Gig0/1
+
+Total entries displayed: 3
+
+In this lab, I implemented a fully configured network topology. The router was configured with a custom hostname, secure SSH access across all devices, and a Class C IP scheme (192.168.1.0/24).
+
+I also segmented the network into two distinct VLANs—VLAN 10 and VLAN 20. These are interconnected through a Core Switch, which manages the VLAN database and trunking for the entire infrastructure.
+
+To ensure disaster recovery and configuration management, all network equipment is backed up to a central TFTP server.

@@ -1,0 +1,24 @@
+===========================================
+
+                  S_Departamens2
+
+===========================================
+enable secret password: cisco
+
+hostname:   S_Departamens2
+
+ip address 192.168.1.5 /24 in vlan1
+
+ip domain-name rj.com
+
+rsa active with 1024 bits
+
+username adm password cisco
+
+in vty 0 - 2 is activade in mode ssh but in more vty the transport is desactivade.
+
+In FA 0/1 - 0/24 is active in acess mod but in interface GE 0/1 active in trunk mode.
+
+
+
+

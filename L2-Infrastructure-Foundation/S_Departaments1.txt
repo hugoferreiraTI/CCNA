@@ -1,0 +1,24 @@
+===========================================
+
+                 S_Departaments1
+
+===========================================
+Hostname: S_Departaments1
+
+ip domain-name: rj.com
+
+ip address 192.168.1.4 /24 in vlan1
+
+ssh active in vty 0 - 2 in more is disable
+
+username adm password cisco
+
+lldp active
+
+
+Vlan10 - RH - FE 0/2 - 0/11
+Vlan20 - T.I - FE 0/14 - 0/24
+
+In ports fe0/1 between fe0/24 and ge0/2 operation in mode acess.
+
+Ports GE0/1 operatin in thrunk mode

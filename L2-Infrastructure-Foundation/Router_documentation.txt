@@ -1,0 +1,20 @@
+================================================
+
+                  ROUTER_RJ
+              RESTRICTED ACESS
+
+================================================
+
+password Secret in privilegie mode: cisco
+
+ip address 192.168.1.1/24
+
+ip domain-name: rj.com
+
+lldp: active
+
+key rsa: active with 1024 bits
+
+username adm password cisco
+
+Tftp active
