@@ -1,0 +1,100 @@
+================================================================
+                    TOPOLOGIA & DOCUMENTAÇÃO DE LAB
+================================================================
+
+============================ VPN CONFIG ========================
+
+[ FASE 1 - ISAKMP (Negociação e Canal Seguro) ]
+crypto isakmp policy 1
+ encr 3des
+ hash md5
+ authentication pre-share
+ group 2
+
+! Chave compartilhada:
+! No R_CORE : crypto isakmp key cisco address 4.4.4.2
+! No R2_NY  : crypto isakmp key cisco address 100.10.0.1
+
+
+[ FASE 2 - IPsec (Criptografia dos Dados / Transform-Set) ]
+crypto ipsec transform-set TS esp-3des esp-md5-hmac
+
+
+[ CRYPTO MAP & ATIVAÇÃO ]
+crypto map CMAP 10 ipsec-isakmp 
+ set peer <IP_DO_ROUTER_OPOSITOR>
+ set transform-set TS 
+ match address VPN
+
+! Aplicação na interface pública (WAN/Outside):
+interface GigabitEthernet0/0/2 (ou porta de saída)
+ crypto map CMAP
+
+
+============================ R_CORE ============================
+Router-ID: 1.1.1.1
+Default Gateway: 100.10.0.2 (Apontado para R_WAN)
+
+[ Interfaces ]
+Gi0/0/0: 10.10.0.1/30   -> Conexão R_LA  [ip nat inside]
+Gi0/0/1: 10.10.1.1/30   -> Conexão R_NY  [ip nat inside]
+Gi0/0/2: 100.10.0.1/24  -> Link Internet [ip nat outside] + [crypto map CMAP]
+
+[ Roteamento OSPF - Processo 1 - Área 0 ]
+- Anunciando redes: 10.10.0.0/30, 10.10.1.0/30
+
+[ DHCP Pools ]
+- network_10: 192.168.10.0/24 | GW: 192.168.10.1
+- network_20: 192.168.20.0/24 | GW: 192.168.20.1
+
+[ ACLs ]
+- PAT (Bypass da VPN + Liberação Internet):
+  5  deny ip 192.168.10.0 0.0.0.255 192.168.30.0 0.0.0.255
+  6  deny ip 192.168.20.0 0.0.0.255 192.168.30.0 0.0.0.255
+  10 permit ip 192.168.0.0 0.0.255.255 any
+
+- VPN (Interesting Traffic):
+  10 permit ip 192.168.10.0 0.0.0.255 192.168.30.0 0.0.0.255
+  20 permit ip 192.168.20.0 0.0.0.255 192.168.30.0 0.0.0.255
+
+
+============================ R_LA ==============================
+Router-ID: 2.2.2.2
+
+[ Interfaces ]
+Gi0/0/0: 10.10.0.2/30   -> Link R_CORE
+Gi0/0/1: 192.168.10.1/24 -> Gateway LAN 10
+  - ip helper-address 10.10.0.1
+
+
+============================ R_NY ==============================
+Router-ID: 3.3.3.3
+
+[ Interfaces ]
+Gi0/0/0: 10.10.1.2/30   -> Link R_CORE
+Gi0/0/1: 192.168.20.1/24 -> Gateway LAN 20
+  - ip helper-address 10.10.1.1
+
+
+============================ R_WAN (Internet) ==================
+[ Interfaces ]
+Gi0/0/0: 100.10.0.2/24  -> Link R_CORE
+Gi0/0/1: 5.5.5.1/24     -> Servidor Web Público
+Gi0/0/2: 4.4.4.1/24     -> Link R2_NY
+* Observação: Roteador puramente L3, sem OSPF, sem NAT.
+
+
+============================ R2_NY (Filial) ====================
+Default Gateway: 4.4.4.1 (Apontado para R_WAN)
+
+[ Interfaces ]
+Gi0/0/0: 4.4.4.2/24     -> Link Internet [ip nat outside] + [crypto map CMAP]
+Gi0/0/1: 192.168.30.1/24 -> Gateway LAN 30 [ip nat inside]
+
+[ DHCP Pool ]
+- NETWORK_30: 192.168.30.0/24 | GW: 192.168.30.1
+
+[ ACLs ]
+- PAT (Bypass da VPN + Liberação Internet):
+  5  deny ip 192.168.30.0 0.0.0.255 192.168.10.0 0.0.0.255
+  6  deny ip 192.168.30.0 0.0.0.255 192.168.20.0 0.0.0.

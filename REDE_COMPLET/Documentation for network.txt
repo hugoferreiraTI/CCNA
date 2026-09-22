@@ -1,0 +1,113 @@
+================================================================
+
+                          R_CORE
+
+
+Secret: Cisco
+
+GigaEthernet 0/0/0: 10.10.0.1 /30
+
+GigaEthernet 0/0/1: 10.10.1.1 /30
+
+LLDP enable
+
+
+================================================================
+
+                          ABR_1
+
+
+Secret: Cisco
+
+GigaEthernet 0/0/0: 10.10.0.2 /30
+
+GigaEthernet 0/0/1: 10.10.5.1 /29
+
+LLDP enable
+
+
+
+                          L2_BroadCast
+
+In FastEthernet ranged 1 - 3 using in mode trunk. Between 4 - 24 is em down.
+
+Vlan 1 is disable, vlan 99 for SSHA is active
+
+                          R_NY
+
+
+Secret: Cisco
+
+GigaEthernet 0/0/0: 10.10.5.2 /29
+
+GigaEthernet 0/0/1: 10.10.6.1 /29
+
+GigaEthernet 0/0/2: x /29
+
+                          SVI_RH_ADM
+Secret: Cisco
+
+This L3 is root bridge with priority in 0.
+
+The GigaEthernet 0/1 is using in no switchport mode, for routing with R_NY 10.10.6.2 /29
+
+I created the vlan 10 - rh and 20 - adm
+
+Vlan 10 ip is 192.168.10.1 /24
+
+vlan 20 ip is 192.168.20.1 /24 
+
+The port 1 - 5 is for vlan 10 in mode access, portfast with bpduguard
+
+the port 6 - 10 is for vlan 20 in mode access, porfast with bpduguard
+
+ip routing enable
+
+                          R_LA
+Secret: Cisco
+
+GigaEthernet 0/0/0: 10.10.5.2 /29
+
+GigaEthernet 0/0/1: 10.10.7.1 /29
+
+
+                          SVI_CALL_DIRETORIA
+Secret: Cisco
+
+This is root bridge.
+
+GigaEthernet 0/1 is no switchport, routing mode with ip: 10.10.7.2 /29
+
+I created the vlan 30 and 40
+
+Vlan 30 ip: 192.168.30.1 /24
+
+For voice vlan 50 ip: 192.168.50.1		
+
+Vlan 40 ip: 196.168.40.1 /24
+
+FastEthernet 0/1 - 5 in mode trunk
+
+FastEthernet 6 - 24 is down
+================================================================
+
+                          ABR_2
+
+Secret: Cisco
+
+GigaEthernet 0/0/1: 10.10.1.2 /30
+
+GigaEthernet 0/0/0: 10.10.8.1 /29
+
+LLDP enable
+
+                          R_LS
+Secret: cisco
+
+GigaEthernet 0/0/0: 10.10.8.2 /29
+
+
+                          R_RJ
+Secret: cisco
+
+GigaEthernet 0/0/0: 10.10.8.3 /29

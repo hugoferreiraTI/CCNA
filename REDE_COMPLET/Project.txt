@@ -1,0 +1,3 @@
+in this project, i created for revision my study for the ccna exam.
+
+Project using since VTP until Etherchannel for redundante links.
